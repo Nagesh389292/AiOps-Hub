@@ -1,6 +1,22 @@
+import os
 from pathlib import Path
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _inject_streamlit_secrets() -> None:
+    """Push Streamlit Cloud secrets into os.environ so pydantic-settings can read them."""
+    try:
+        import streamlit as st
+        secrets = dict(st.secrets)
+        for key, value in secrets.items():
+            if key not in os.environ:
+                os.environ[key] = str(value)
+    except Exception:
+        pass  # Not running under Streamlit, or secrets not configured yet
+
+
+_inject_streamlit_secrets()
 
 
 class Settings(BaseSettings):
