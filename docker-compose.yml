@@ -1,0 +1,75 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aiops-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aiops_hub
+      POSTGRES_USER: aiops
+      POSTGRES_PASSWORD: aiops_secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aiops -d aiops_hub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  aiops-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aiops-api
+    command: ["python", "-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://aiops:aiops_secret@postgres:5432/aiops_hub
+      AIOPS_RUNTIME_MODE: ${AIOPS_RUNTIME_MODE:-mock}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  aiops-hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aiops-hub
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://aiops:aiops_secret@postgres:5432/aiops_hub
+      AIOPS_RUNTIME_MODE: ${AIOPS_RUNTIME_MODE:-mock}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+    volumes:
+      - aiops_hub_data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      aiops-api:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  aiops_hub_data:

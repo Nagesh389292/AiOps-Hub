@@ -1,0 +1,13 @@
+AIOps Hub FastAPI Endpoints:
+- GET /health
+- GET /metrics
+- POST /benchmarks/run
+- POST /routing/classify
+- POST /routing/simulate
+- POST /migration/analyze
+- GET /history/accuracy
+- GET /history/cost
+- GET /history/migration
+- GET /history/validation-failures
+- GET /leaderboard/{category}
+- GET /ai/insight/{category}

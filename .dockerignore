@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+.git/
+.gitignore
+aiops_hub.db
+reports/
+*.pyc
+*.pyo
+*.pyd
+*.log

@@ -1,0 +1,14 @@
+[
+  {
+    "problem_id": 1,
+    "title": "Refund Intent",
+    "text": "I was charged twice, please issue a refund.",
+    "expected_label": "refund"
+  },
+  {
+    "problem_id": 2,
+    "title": "Technical Issue Intent",
+    "text": "The app crashes every time I open settings.",
+    "expected_label": "technical_issue"
+  }
+]

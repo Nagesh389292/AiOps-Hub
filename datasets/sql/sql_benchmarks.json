@@ -1,0 +1,14 @@
+[
+  {
+    "problem_id": 1,
+    "title": "Simple Select",
+    "prompt": "Return all active users from users table.",
+    "expected_sql": "SELECT * FROM users WHERE status = 'active';"
+  },
+  {
+    "problem_id": 2,
+    "title": "Join Query",
+    "prompt": "Return order id and customer name for all orders.",
+    "expected_sql": "SELECT o.id, c.name FROM orders o JOIN customers c ON o.customer_id = c.id;"
+  }
+]

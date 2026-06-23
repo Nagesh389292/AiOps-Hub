@@ -1,0 +1,56 @@
+[
+  {
+    "problem_id": 1,
+    "title": "Train Speed Logic",
+    "prompt": "A train travels from City A to City B at 60 km/h and returns at 40 km/h. What is the average speed for the entire journey? Show your reasoning step by step.",
+    "expected_answer": "48 km/h",
+    "reasoning_type": "math",
+    "difficulty": "medium",
+    "explanation": "Use harmonic mean: 2*60*40/(60+40) = 4800/100 = 48 km/h"
+  },
+  {
+    "problem_id": 2,
+    "title": "Logical Deduction",
+    "prompt": "All doctors are professionals. Some professionals are wealthy. Can we conclude that some doctors are wealthy? Explain your reasoning.",
+    "expected_answer": "No",
+    "reasoning_type": "logical",
+    "difficulty": "medium",
+    "explanation": "No. The wealthy professionals could be a different subset than doctors. The premises don't guarantee overlap between doctors and wealthy people."
+  },
+  {
+    "problem_id": 3,
+    "title": "Probability Reasoning",
+    "prompt": "A bag contains 4 red balls and 6 blue balls. If you draw 2 balls without replacement, what is the probability that both are red? Show your work.",
+    "expected_answer": "2/15",
+    "reasoning_type": "probability",
+    "difficulty": "medium",
+    "explanation": "P(first red) = 4/10. P(second red | first red) = 3/9. P(both) = 4/10 * 3/9 = 12/90 = 2/15"
+  },
+  {
+    "problem_id": 4,
+    "title": "Causal Reasoning",
+    "prompt": "A company's sales increased by 20% after they started a new ad campaign AND hired a new sales director at the same time. A manager concludes the ad campaign caused the sales increase. Is this reasoning valid? Why or why not?",
+    "expected_answer": "No",
+    "reasoning_type": "causal",
+    "difficulty": "hard",
+    "explanation": "No. This is a post hoc / confounding variable fallacy. Both changes happened simultaneously, so we cannot attribute causation to the ad campaign alone without controlling for the new director's impact."
+  },
+  {
+    "problem_id": 5,
+    "title": "Sequence Pattern",
+    "prompt": "What is the next number in the sequence: 2, 6, 12, 20, 30, ? Explain the pattern you found.",
+    "expected_answer": "42",
+    "reasoning_type": "pattern",
+    "difficulty": "easy",
+    "explanation": "Differences: 4, 6, 8, 10, 12 (increasing by 2). So next = 30 + 12 = 42. Also: n*(n+1) pattern: 1*2=2, 2*3=6, 3*4=12, 4*5=20, 5*6=30, 6*7=42."
+  },
+  {
+    "problem_id": 6,
+    "title": "Analogy Reasoning",
+    "prompt": "Doctor is to Hospital as Teacher is to ___? Now apply the same relationship: Pilot is to ___? Explain the relationship pattern.",
+    "expected_answer": "Airplane",
+    "reasoning_type": "analogy",
+    "difficulty": "easy",
+    "explanation": "Doctor works in a Hospital. Teacher works in a School. Pilot works in/on an Airplane. The relationship is professional to their primary workplace/vehicle."
+  }
+]
