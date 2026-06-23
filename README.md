@@ -1,5 +1,10 @@
 # AIOps Hub
 
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/nagesh389292/aiops-hub)
+[![GitHub](https://img.shields.io/badge/GitHub-Nagesh389292%2FAiOps--Hub-blue?logo=github)](https://github.com/Nagesh389292/AiOps-Hub)
+
+> 🚀 **Live Dashboard:** https://share.streamlit.io/nagesh389292/aiops-hub *(update with your exact URL after deployment)*
+
 AIOps Hub is a production-ready Python platform for enterprise AI model evaluation, cost optimization, output validation, and recommendation.
 
 ## Features
