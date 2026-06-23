@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     app_name: str = "AIOps Hub"
-    runtime_mode: str = Field(default="mock", alias="AIOPS_RUNTIME_MODE")
+    runtime_mode: str = Field(default="real", alias="AIOPS_RUNTIME_MODE")
 
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
     anthropic_api_key: str | None = Field(default=None, alias="ANTHROPIC_API_KEY")
